@@ -42,12 +42,10 @@ rails_deploy_bundle: "{{ rails_deploy_shell_prefix }}/bundle"
 # but you can put an absolute path if you want.
 rails_deploy_bundle_path: vendor/bundle
 
-# A full list of possible environments that your app could run against. This is used by
-# bundle --without and it will figure out which environments to remove for you.
+# All gem groups you do not want installed on your production servers
+# it will be passed to bundle --without
 rails_deploy_bundle_without:
   - development
-  - staging
-  - production
   - test
 
 # Should it run migrations and precompile assets?

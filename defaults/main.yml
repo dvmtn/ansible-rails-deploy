@@ -13,8 +13,6 @@ rails_deploy_bundle: "{{ rails_deploy_shell_prefix }}/bundle"
 rails_deploy_bundle_path: vendor/bundle
 rails_deploy_bundle_without:
   - development
-  - staging
-  - production
   - test
 
 rails_deploy_migrate: true

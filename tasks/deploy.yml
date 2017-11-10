@@ -1,6 +1,6 @@
 ---
 - name: ensure gems are installed
-  command: "{{ rails_deploy_bundle }} install --deployment --path={{ rails_deploy_bundle_path }} --without={{ rails_deploy_bundle_without|difference([rails_deploy_env.RAILS_ENV])|join(',') }} chdir={{ rails_deploy_path }}"
+  command: "{{ rails_deploy_bundle }} install --deployment --path={{ rails_deploy_bundle_path }} --without={{ rails_deploy_bundle_without|join(',') }} chdir={{ rails_deploy_path }}"
   become: true
   become_user: "{{ rails_deploy_user }}"
 
@@ -21,7 +21,6 @@
 - name: ensure database is seeded
   shell: ". /etc/default/{{ rails_deploy_app_name }} && {{ rails_deploy_bundle }} exec rake db:seed chdir={{ rails_deploy_path }}"
   when: inventory_hostname == rails_deploy_migrate_master_host
-  environment: rails_deploy_env
   become: true
   become_user: "{{ rails_deploy_user }}"
 
