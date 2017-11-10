@@ -94,9 +94,10 @@ rails_deploy_git_url: "git@bitbucket.org:yourname/your-project.git"
 rails_deploy_migrate_master_host: "{{ groups['app'][0] }}"
 ```
 
-#### Tracking the repo status in other roles
+#### Tracking the repo and migration status in other roles
 
-This role sets `rails_repo_status_changed` which will track if the repo was modified or not.
+ - This role sets `rails_repo_status_changed` which will track if the repo was modified or not
+ - This role sets `rails_deploy_ran_migration` which will track if a migration was run
 
 ## Installation
 
