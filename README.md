@@ -4,7 +4,7 @@ This role was developed to be an idempotent deployment for rails applications, a
 
 this role will always run migrations and seeds, even if they have not changed. We belive deployments should be idempotent, if your deployment halts part way through you want to know you can just run it again without any problems.
 
-##Requirements
+## Requirements
 
 - If your git repositry is private you will need to set an SSH keypair, OAuth tokens or another way to pull your code. (We use SSH deploy keys)
 - You will need to set up any enviorment variables this repo requires and put them in `/etc/default/{{ rails_deploy_app_name }}`, as this role will try to source that file.
@@ -62,3 +62,57 @@ rails_deploy_migrate_master_host: "{{ groups['app'][0] }}"
 # The amount in seconds to cache apt-update.
 apt_cache_valid_time: 86400
 ```
+
+## Example playbook
+
+For the sake of this example let's assume you have a group called **app** and you have a typical `main.yml` file.
+
+To use this role edit your `main.yml` file to look something like this:
+
+```
+---
+- name: ensure app servers are configured
+- hosts: app
+
+  roles:
+    # Insert other roles here to provision the server before deploying a rails app to it.
+    - { role: dvmtn.rails-deploy, tags: rails }
+```
+
+Let's say you want to edit a few defaults, you can do this by opening or creating `group_vars/all.yml` which is located relative to your `inventory` directory and then making it look something like this:
+
+```
+---
+# Variables that could have been populated to satisfy other roles, it doesn't matter.
+user_name: dvmtn
+secrets_load_path: /home/yourname/dev/secrets
+
+# Overwrite a few rails deploy variables.
+rails_deploy_app_name: testproj
+rails_deploy_user: "{{ user_name }}"
+
+rails_deploy_git_url: "git@bitbucket.org:yourname/your-project.git"
+
+rails_deploy_migrate_master_host: "{{ groups['app'][0] }}"
+```
+
+#### Tracking the repo status in other roles
+
+This role sets `rails_repo_status_changed` which will track if the repo was modified or not.
+
+## Installation
+
+`$ ansible-galaxy install dvmtn.rails-delpoy`
+
+
+## Requirements
+
+Tested on ubuntu 14.04 and 16.04 LTS but it should work on other versions that are similar.
+
+## Ansible galaxy
+
+You can find it on the official ansible galaxy [here](https://galaxy.ansible.com/list#/roles/866).
+
+## License
+
+MIT

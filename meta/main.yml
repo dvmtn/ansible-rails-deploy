@@ -3,7 +3,7 @@ galaxy_info:
   author: Developer Mountain
   description: Deploy a rails application using git.
   company: Developer Mountain
-  license: license (MIT)
+  license: MIT
   min_ansible_version: 1.9
 
   platforms:
@@ -12,6 +12,7 @@ galaxy_info:
     - all
 
   categories:
+  - rails
   - system
   - web
   - development
