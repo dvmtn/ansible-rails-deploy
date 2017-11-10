@@ -111,7 +111,7 @@ Tested on ubuntu 14.04 and 16.04 LTS but it should work on other versions that a
 
 ## Ansible galaxy
 
-You can find it on the official ansible galaxy [here](https://galaxy.ansible.com/list#/roles/866).
+You can find it on the official ansible galaxy [here](https://galaxy.ansible.com/dvmtn/rails-deploy/).
 
 ## License
 
