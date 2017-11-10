@@ -7,7 +7,7 @@ this role will always run migrations and seeds, even if they have not changed. W
 ## Requirements
 
 - If your git repositry is private you will need to set an SSH keypair, OAuth tokens or another way to pull your code. (We use SSH deploy keys)
-- You will need to set up any enviorment variables this repo requires and put them in `/etc/default/{{ rails_deploy_app_name }}`, as this role will try to source that file.
+- You will need to set up any enviorment variables this repo requires and put them in `/etc/default/{{ rails_deploy_app_name }}`, as this role will try to source that file. We do this with the [dvmtn.env](https://github.com/dvmtn/dvmtn-env) role.
 
 
 ## Role variables
