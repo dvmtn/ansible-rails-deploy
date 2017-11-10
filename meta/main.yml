@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Developer Mountain
+  description: Deploy a rails application using git.
+  company: Developer Mountain
+  license: license (MIT)
+  min_ansible_version: 1.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+
+  categories:
+  - system
+  - web
+  - development
+
+dependencies: []

@@ -1,0 +1,9 @@
+---
+# install git and other app dependencies
+- include: dependencies.yml
+
+# update the app code from a remote git repo
+- include: git.yml
+
+# run various commands to deploy rails properly
+- include: deploy.yml

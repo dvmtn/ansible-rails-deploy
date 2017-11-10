@@ -1,0 +1,6 @@
+---
+- name: ensure local git repo is updated
+  git: repo={{ rails_deploy_git_url }} dest={{ rails_deploy_path }} version={{ rails_deploy_git_version }} accept_hostkey=yes
+  register: repo_status
+  become: true
+  become_user: deploy
